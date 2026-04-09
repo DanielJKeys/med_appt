@@ -12,6 +12,7 @@ import InstantConsultation from './Components/InstantConsultation/InstantConsult
 import FindDoctorSearch from './Components/FindDoctorSearch/FindDoctorSearch';
 import ReviewForm from './Components/ReviewForm/ReviewForm';
 import ProfileCard from './Components/ProfileCard/ProfileCard';
+import ReportsLayout from './Components/ReportsLayout/ReportsLayout'; // Added missing import
 
 function App() {
   return (
@@ -32,13 +33,12 @@ function App() {
                 {/* Review & Feedback Route */}
                 <Route path="/reviews" element={<ReviewForm />} />
 
-                {/* Profile & User Account Route */}
+                {/* Profile & User Account Routes */}
                 <Route path="/profile" element={<ProfileCard />} />
-
-                {/* Default route for undefined paths */}
-                <Route path="*" element={<Landing_Page />} />
-
                 <Route path="/reports" element={<ReportsLayout />} />
+
+                {/* Default route for undefined paths - Keep this at the bottom */}
+                <Route path="*" element={<Landing_Page />} />
               </Routes>
           </Notification>
         </BrowserRouter>
