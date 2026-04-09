@@ -19,8 +19,9 @@
 /* Button styling */
 .btn-primary, .btn-disabled {
     display: block;
-    width: 200px;
-    margin: 0 auto;
+    width: 100%; /* Changed from 200px to 100% or auto for better responsiveness */
+    max-width: 200px; 
+    margin: 1rem auto;
     padding: 12px 24px;
     border: none;
     border-radius: 8px;
@@ -28,6 +29,7 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-align: center; /* Ensures text is centered if using <a> as button */
 }
 
 .btn-primary {
@@ -55,24 +57,49 @@
     border: 1px solid #e1e8f0;
 }
 
-.review-form div {
-    margin-bottom: 15px;
+/* Fix: Specificity check. Ensure your JSX uses <div className="form-group"> */
+.review-form .form-group {
+    margin-bottom: 20px;
+    text-align: left; /* Ensures labels stay left even if container is centered */
 }
 
 .review-form label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     font-weight: 500;
     color: #4a5568;
 }
 
-/* Input and Textarea styling */
+* Input and Textarea styling */
 .review-form input[type="text"],
 .review-form textarea,
 .review-form select {
     width: 100%;
-    padding: 10px;
+    padding: 12px 15px; 
     border: 1px solid #cbd5e0;
     border-radius: 6px;
     font-size: 0.95rem;
-    box-sizing: border-box; /* Ensures padding doesn't affect width
+    box-sizing: border-box; 
+    display: block;
+    margin-top: 5px;
+}
+
+.review-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* The red border section for the submitted review */
+.submitted-review-box {
+    border: 2px solid red;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fffafa;
+    border-radius: 8px;
+}
+
+.star-rating {
+    color: #ffc107;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
