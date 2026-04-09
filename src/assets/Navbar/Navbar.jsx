@@ -14,7 +14,6 @@ function Navbar() {
 
     if (token) {
       setIsLoggedIn(true);
-      // Extract name from email (everything before @) if 'name' isn't explicitly stored
       if (email) {
         const name = email.split('@')[0];
         setUserName(name);
@@ -30,7 +29,7 @@ function Navbar() {
     sessionStorage.removeItem("phone");
     setIsLoggedIn(false);
     navigate("/");
-    window.location.reload(); // Ensure all components reset
+    window.location.reload(); 
   };
 
   const handleClick = () => {
@@ -72,6 +71,13 @@ function Navbar() {
         </li>
         <li className="link">
           <Link to="/appointments">Appointments</Link>
+        </li>
+        
+        {/* Added Instant Consultation Link here */}
+        <li className="link">
+          <Link to="/instant-consultation">
+            <button className="btn1">Instant Consultation</button>
+          </Link>
         </li>
 
         {isLoggedIn ? (
