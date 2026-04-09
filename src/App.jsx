@@ -8,15 +8,16 @@ import Sign_Up from './assets/Sign_Up/Sign_Up.jsx';
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Navbar/>
-        <Routes>
-          <Route path="/" element={<Landing_Page/>}/>
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/signup" element={<Sign_Up/>}/>
-          <Route path="/instant-consultation" element={<InstantConsultation />} />
-        </Routes>
-      </BrowserRouter>
+        <BrowserRouter>
+          <Notification>
+              <Routes>
+                <Route path="/login" element={<Login />}/>
+                <Route path="/signup" element={<SignUp />}/>
+                <Route path="/instant-consultation" element={<InstantConsultation />} />
+				 <Route path="<component_route>" element={<component_name/>}/> //Replace the component_route with the component path and component_name with the component name as imported in the App.js file. 
+              </Routes>
+          </Notification>
+        </BrowserRouter>
     </div>
   );
 }
