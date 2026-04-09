@@ -1,0 +1,67 @@
+.reports-container {
+    padding: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.reports-container h1 {
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.reports-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.reports-table th {
+    background-color: #3685fb;
+    color: white;
+    padding: 15px;
+    text-align: left;
+}
+
+.reports-table td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    color: #555;
+}
+
+.reports-table tr:hover {
+    background-color: #f8faff;
+}
+
+.btn-view, .btn-download {
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s;
+}
+
+.btn-view {
+    background-color: #48bb78;
+    color: white;
+}
+
+.btn-view:hover {
+    background-color: #38a169;
+}
+
+.btn-download {
+    background-color: #3685fb;
+    color: white;
+    display: inline-block;
+}
+
+.btn-download:hover {
+    background-color: #2172e5;
+}

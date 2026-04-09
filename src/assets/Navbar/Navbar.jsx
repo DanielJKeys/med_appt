@@ -5,9 +5,9 @@ import './Navbar.css';
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState("");
+  const [showDropdown, setShowDropdown] = useState(false); // State for dropdown visibility
   const navigate = useNavigate();
 
-  // Check session storage on component mount
   useEffect(() => {
     const token = sessionStorage.getItem("auth-token");
     const email = sessionStorage.getItem("email");
@@ -21,15 +21,20 @@ function Navbar() {
     }
   }, []);
 
-  // Handle Logout
   const handleLogout = () => {
     sessionStorage.removeItem("auth-token");
     sessionStorage.removeItem("email");
     sessionStorage.removeItem("name");
     sessionStorage.removeItem("phone");
     setIsLoggedIn(false);
+    setShowDropdown(false);
     navigate("/");
     window.location.reload(); 
+  };
+
+  // Toggle dropdown visibility
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
   };
 
   const handleClick = () => {
@@ -70,27 +75,37 @@ function Navbar() {
           <Link to="/">Home</Link>
         </li>
         <li className="link">
-          <Link to="/appointments">Appointments</Link>
+          <Link to="/instant-consultation">Appointments</Link>
         </li>
-        
-        {/* Added Instant Consultation Link here */}
         <li className="link">
           <Link to="/instant-consultation">
             <button className="btn1">Instant Consultation</button>
           </Link>
         </li>
+        <li className="link">
+          <Link to="/reviews">Reviews</Link>
+        </li>
 
         {isLoggedIn ? (
-          <>
-            <li className="link welcome-user">
-              Welcome, {userName}
-            </li>
-            <li className="link">
-              <button className="btn2" onClick={handleLogout}>
-                Logout
-              </button>
-            </li>
-          </>
+          <li className="link dropdown" onClick={toggleDropdown}>
+            <div className="welcome-user">
+              Welcome, {userName} <i className="fa fa-caret-down"></i>
+            </div>
+            
+            {showDropdown && (
+              <ul className="dropdown-menu">
+                <li>
+                  <Link to="/profile">Your Profile</Link>
+                </li>
+                <li>
+                  <Link to="/reports">Your Reports</Link>
+                </li>
+                <li onClick={handleLogout} className="logout-link">
+                  Logout
+                </li>
+              </ul>
+            )}
+          </li>
         ) : (
           <>
             <li className="link">

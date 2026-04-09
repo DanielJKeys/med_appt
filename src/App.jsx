@@ -1,20 +1,44 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from './assets/Navbar/Navbar.jsx';
-import Landing_Page from './assets/Landing_Page/Landing_Page.jsx';
-import Login from './assets/Login/Login.jsx';
-import Sign_Up from './assets/Sign_Up/Sign_Up.jsx';
+
+// Layout & Wrapper Components
+import Notification from './Components/Notification/Notification';
+
+// Page Components
+import Landing_Page from './Components/Landing_Page/Landing_Page';
+import Login from './Components/Login/Login';
+import Sign_Up from './Components/Sign_Up/Sign_Up';
+import InstantConsultation from './Components/InstantConsultation/InstantConsultation';
+import FindDoctorSearch from './Components/FindDoctorSearch/FindDoctorSearch';
+import ReviewForm from './Components/ReviewForm/ReviewForm';
+import ProfileCard from './Components/ProfileCard/ProfileCard';
 
 function App() {
   return (
     <div className="App">
         <BrowserRouter>
+          {/* Notification wraps the routes to provide the Navbar and Appointment alerts globally */}
           <Notification>
               <Routes>
+                {/* Home and Auth Routes */}
+                <Route path="/" element={<Landing_Page />} />
                 <Route path="/login" element={<Login />}/>
-                <Route path="/signup" element={<SignUp />}/>
+                <Route path="/signup" element={<Sign_Up />}/>
+
+                {/* Doctor & Consultation Routes */}
+                <Route path="/find-doctor" element={<FindDoctorSearch />} />
                 <Route path="/instant-consultation" element={<InstantConsultation />} />
-				 <Route path="<component_route>" element={<component_name/>}/> //Replace the component_route with the component path and component_name with the component name as imported in the App.js file. 
+                
+                {/* Review & Feedback Route */}
+                <Route path="/reviews" element={<ReviewForm />} />
+
+                {/* Profile & User Account Route */}
+                <Route path="/profile" element={<ProfileCard />} />
+
+                {/* Default route for undefined paths */}
+                <Route path="*" element={<Landing_Page />} />
+
+                <Route path="/reports" element={<ReportsLayout />} />
               </Routes>
           </Notification>
         </BrowserRouter>
